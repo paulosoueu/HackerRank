@@ -8,10 +8,10 @@ namespace TesteConsole
     {
         static void Main(string[] args)
         {
-            ComposicaoCom2E4(10000000);
+            MinimunSwaps();
         }
 
-        //teste Amazon
+        #region Amazon
         public static void ComposicaoCom2E4(int limit){
             IList<int> list = new List<int>(){2, 4};
 
@@ -41,7 +41,52 @@ namespace TesteConsole
             return add2and4(iterator * 10, limit, r);
         }
 
-        //Teste Amazon
+        #endregion Amazon
+
+        public static void MinimunSwaps(){
+            IList<int> list = new List<int>(){7, 3, 2, 4, 5, 6};
+            int numSwaps = 0;
+            for(var i = 0; i < list.Count; i++){
+                while(i + 1 != list.ElementAt(i)){
+                    int swapIndex = list[i] - 1;
+                    int valAtIndex = list[i];
+                    int valAtSwapIndex = list[swapIndex];
+                    list[i] = valAtSwapIndex;
+                    list[swapIndex] = valAtIndex;
+                    numSwaps++;
+                }
+            }
+
+            Console.WriteLine(numSwaps);
+        }
+
+        public static void MinimunSwaps2(){
+            int[] arr = new int[]{4,3,1,2};
+
+            int steps = 0;
+            if(arr[arr.Length - 1] != arr.Length){
+                double half =arr.Length / 2;
+                int idxMax = (int)Math.Ceiling(half);
+                var aux = arr[idxMax];
+                arr[idxMax] = arr[0];
+                arr[0] = aux;
+                steps += 1;
+            }
+
+            for(var i = 0; i < arr.Length; i++){
+                if (arr[i] != i + 1){
+                    var idx = Array.IndexOf(arr, i + 1);
+
+                    var temp = arr[idx];
+                    arr[idx] = arr[i];
+                    arr[i] = temp;
+                    steps++;
+                    Console.WriteLine(arr[i]);
+                }
+            }
+
+            Console.WriteLine(steps);
+        }
 
         public static void ArrayManipulation(){
             int n = 10;
@@ -85,33 +130,6 @@ namespace TesteConsole
             Console.WriteLine(arr.Max());
         }
 
-        public static void MinimunSwaps(){
-            int[] arr = new int[]{4,3,1,2};
-
-            int steps = 0;
-            if(arr[arr.Length - 1] != arr.Length){
-                double half =arr.Length / 2;
-                int idxMax = (int)Math.Ceiling(half);
-                var aux = arr[idxMax];
-                arr[idxMax] = arr[0];
-                arr[0] = aux;
-                steps += 1;
-            }
-
-            for(var i = 0; i < arr.Length; i++){
-                if (arr[i] != i + 1){
-                    var idx = Array.IndexOf(arr, i + 1);
-
-                    var temp = arr[idx];
-                    arr[idx] = arr[i];
-                    arr[i] = temp;
-                    steps++;
-                    Console.WriteLine(arr[i]);
-                }
-            }
-
-            Console.WriteLine(steps);
-        }
 
         public static void NewYearChaos(){
             List<int> q = new List<int>(){2, 5, 1, 3, 4};
