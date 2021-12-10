@@ -44,10 +44,10 @@ namespace TesteConsole
         #endregion Amazon
 
         public static void MinimunSwaps(){
-            IList<int> list = new List<int>(){7, 3, 2, 4, 5, 6};
+            IList<int> list = new List<int>(){7, 1, 3, 2, 4, 5, 6};
             int numSwaps = 0;
             for(var i = 0; i < list.Count; i++){
-                while(i + 1 != list.ElementAt(i)){
+                while(i + 1 != list[i]){
                     int swapIndex = list[i] - 1;
                     int valAtIndex = list[i];
                     int valAtSwapIndex = list[swapIndex];
